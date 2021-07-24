@@ -30,13 +30,13 @@ const styles = StyleSheet.create({
   title: {
     color: Colors.GRAY_DARK,
     fontFamily: Typography.FONT_FAMILY_BOLD,
-    fontSize: Typography.FONT_SIZE_22,
+    fontSize: Typography.FONT_SIZE_12,
     paddingRight: 16,
   },
   text1: {
     color: Colors.GRAY_DARK,
     fontFamily: Typography.FONT_FAMILY_REGULAR,
-    fontSize: Typography.FONT_SIZE_22,
+    fontSize: Typography.FONT_SIZE_12,
   },
   text2: {
     color: Colors.GRAY_DARK,

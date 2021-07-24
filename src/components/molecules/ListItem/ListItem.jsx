@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
+import { convertMoney } from "../../../utils";
 import styles from "./ListItem.style";
 
 export default function ListItem({
@@ -10,6 +11,7 @@ export default function ListItem({
   total,
   checked,
   check,
+  key,
 }) {
   return (
     <TouchableOpacity
@@ -19,7 +21,9 @@ export default function ListItem({
       <View style={styles.flex}>
         <View style={styles.content1}>
           <Text style={styles.title}>{name}</Text>
-          <Text style={styles.text1}>Valor unitário:{sale_value}</Text>
+          <Text style={styles.text1}>
+            Valor unitário:{convertMoney(sale_value)}
+          </Text>
         </View>
         <View style={styles.content2}>
           <Text numberOfLines={2} style={styles.text1}>
@@ -27,7 +31,7 @@ export default function ListItem({
           </Text>
         </View>
         <View style={styles.content2}>
-          <Text style={styles.text1}>{total}</Text>
+          <Text style={styles.text1}>{convertMoney(total)}</Text>
         </View>
       </View>
     </TouchableOpacity>
