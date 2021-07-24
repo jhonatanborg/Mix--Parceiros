@@ -16,12 +16,12 @@ const styles = StyleSheet.create({
   title: {
     color: Colors.WHITE,
     fontFamily: Typography.FONT_FAMILY_REGULAR,
-    fontSize: Typography.FONT_SIZE_16,
+    fontSize: Typography.FONT_SIZE_12,
   },
   value: {
     color: Colors.WHITE,
     fontFamily: Typography.FONT_FAMILY_BOLD,
-    fontSize: Typography.FONT_SIZE_32,
+    fontSize: Typography.FONT_SIZE_22,
     borderBottomWidth: 1,
     borderColor: Colors.WHITE,
     borderStartWidth: 15,
