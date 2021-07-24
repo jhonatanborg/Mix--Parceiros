@@ -34,12 +34,12 @@ const styles = StyleSheet.create({
   labeTotal: {
     color: Colors.WHITE,
     fontFamily: Typography.FONT_FAMILY_REGULAR,
-    fontSize: Typography.FONT_SIZE_22,
+    fontSize: Typography.FONT_SIZE_12,
   },
   textTotal: {
     color: Colors.WHITE,
     fontFamily: Typography.FONT_FAMILY_BOLD,
-    fontSize: Typography.FONT_SIZE_22,
+    fontSize: Typography.FONT_SIZE_12,
   },
   cardCommission: {
     backgroundColor: Colors.SUCCESS,
@@ -51,12 +51,12 @@ const styles = StyleSheet.create({
   labelComission: {
     color: Colors.WHITE,
     fontFamily: Typography.FONT_FAMILY_REGULAR,
-    fontSize: Typography.FONT_SIZE_22,
+    fontSize: Typography.FONT_SIZE_12,
   },
   textCommision: {
-    color: Colors.THEMECOLOR,
+    color: Colors.BLACK,
     fontFamily: Typography.FONT_FAMILY_BOLD,
-    fontSize: Typography.FONT_SIZE_22,
+    fontSize: Typography.FONT_SIZE_12,
   },
   flex: {
     flexDirection: "row",
@@ -66,8 +66,31 @@ const styles = StyleSheet.create({
   heading1: {
     color: Colors.GRAY_DARK,
     fontFamily: Typography.FONT_FAMILY_BOLD,
-    fontSize: Typography.FONT_SIZE_22,
+    fontSize: Typography.FONT_SIZE_12,
     paddingVertical: 10,
+  },
+  section2: {
+    paddingVertical: 10,
+  },
+  card: {
+    backgroundColor: Colors.WHITE,
+    padding: 15,
+    borderRadius: 8,
+    marginVertical: 5,
+  },
+  content2: {
+    borderRadius: 8,
+    marginVertical: 5,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  text: {
+    color: Colors.GRAY_DARK,
+    fontSize: Typography.FONT_SIZE_12,
+    fontWeight: Typography.FONT_WEIGHT_REGULAR,
+    fontFamily: Typography.FONT_FAMILY_REGULAR,
+    textTransform: "capitalize",
   },
   bottomBar: {
     backgroundColor: Colors.WHITE,
