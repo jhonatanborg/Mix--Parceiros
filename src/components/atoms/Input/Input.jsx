@@ -1,5 +1,5 @@
-import React from "react";
-import { View, TextInput, Text } from "react-native";
+import React, { useRef } from "react";
+import { View, TextInput, Text, TouchableOpacity } from "react-native";
 import styles from "./Input.style";
 export const InputText = ({
   placeholder,
@@ -9,11 +9,18 @@ export const InputText = ({
   secureTextEntry,
   error,
 }) => {
+  const inputRef = useRef(null);
   return (
-    <View style={styles.sectionInput}>
+    <TouchableOpacity
+      style={styles.sectionInput}
+      onPress={() => {
+        inputRef.current.focus();
+      }}
+    >
       <Text style={styles.text}>{placeholder}</Text>
       <View style={styles.row}>
         <TextInput
+          ref={inputRef}
           style={styles.input}
           underlineColorAndroid="transparent"
           placeholderTextColor="grey"
@@ -28,6 +35,6 @@ export const InputText = ({
           </View>
         )}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };

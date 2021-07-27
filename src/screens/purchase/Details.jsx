@@ -10,6 +10,7 @@ import AuthContext from "../../contexts/session";
 import { statusPurchase } from "../../shared/purchase";
 export default function Details({ route, navigation }) {
   const { user } = useContext(AuthContext);
+  console.log(user);
   const [itensPurchase, setItensPurchase] = useState(null);
   const [purchase, setPurchase] = useState(route.params);
   const [address, setAddress] = useState(route.params.address);

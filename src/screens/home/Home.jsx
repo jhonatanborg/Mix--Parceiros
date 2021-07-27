@@ -29,7 +29,6 @@ export default function Home({ navigation }) {
 
   useEffect(() => {
     setIsLoading(true);
-
     const fetchPurchases = async () => {
       try {
         const response = await Purchase.listPurchases(status);
@@ -55,10 +54,11 @@ export default function Home({ navigation }) {
         setBottom(false);
       }
     };
-    const timeout = setTimeout(() => {
+    fetchPurchases();
+    const timeout = setInterval(() => {
       fetchPurchases();
     }, 5000);
-    return () => clearTimeout(timeout);
+    return () => clearInterval(timeout);
   }, [status]);
   return (
     <>
