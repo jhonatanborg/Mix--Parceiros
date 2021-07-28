@@ -57,7 +57,7 @@ export default function Home({ navigation }) {
     fetchPurchases();
     const timeout = setInterval(() => {
       fetchPurchases();
-    }, 5000);
+    }, 15000);
     return () => clearInterval(timeout);
   }, [status]);
   return (
