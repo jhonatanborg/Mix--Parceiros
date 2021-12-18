@@ -14,12 +14,14 @@ import AuthContext from "../../contexts/session";
 import { Purchase } from "../../services";
 import { statusPurchase } from "../../shared/purchase";
 import styles from "./Home.style";
+import { convertMoney } from "../../utils";
 export default function Home({ navigation }) {
   const { user } = useContext(AuthContext);
   const [purchases, setPurchases] = useState([]);
   const [status, setStatus] = useState("Pendente");
   const [bottom, setBottom] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [total, setTotal] = useState(0);
   function navigate(item) {
     navigation.navigate("Details", item);
   }
@@ -27,12 +29,14 @@ export default function Home({ navigation }) {
     setStatus(filter);
   }
 
+
   useEffect(() => {
     setIsLoading(true);
     const fetchPurchases = async () => {
       try {
         const response = await Purchase.listPurchases(status);
         const listPurchases = [];
+        let total = 0;
         response.data.forEach((item) => {
           listPurchases.push({
             id: item.id,
@@ -43,8 +47,11 @@ export default function Home({ navigation }) {
             status: statusPurchase(item.status),
             itens: item.itens,
             address: item.deliveryAddress,
+            payments: item.payments,
           });
+          total += parseFloat(item.total)
         });
+        setTotal(convertMoney(total));
         setPurchases(listPurchases);
         setIsLoading(false);
         setBottom(false);
@@ -63,7 +70,8 @@ export default function Home({ navigation }) {
   return (
     <>
       <ScrollView style={styles.container}>
-        <Header name={user?.name} />
+
+        <Header name={user?.name} total={total} />
         <View style={styles.section}>
           <View style={styles.flex}>
             <Text style={styles.heading1}>Lista de pedidos</Text>

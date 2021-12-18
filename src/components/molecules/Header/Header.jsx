@@ -3,20 +3,30 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import styles from "./Header.style";
 import AuthContext from "../../../contexts/session";
-export default function Header({ name }) {
+export default function Header({ name, total }) {
   const { signOut } = useContext(AuthContext);
   return (
     <View style={styles.section}>
       <View style={styles.flex}>
-        <Text style={styles.title}>Olá, {name}</Text>
+        <View>
+          <Text style={styles.subtitle}>Bom dia</Text>
+          <Text style={styles.title}>{name}</Text>
+        </View>
         <TouchableOpacity onPress={() => signOut()}>
           <Text style={styles.title}>Sair</Text>
         </TouchableOpacity>
       </View>
-      <View>
-        <Text style={styles.heading1}>Saldo Comissões</Text>
-        <Text style={styles.value}>R$ 145.00</Text>
-        <Text style={styles.heading1}>4 compras</Text>
+      <View style={styles.card}>
+        <View style={styles.cardHeader}>
+          <Text style={styles.heading1}>Total</Text>
+          <Text style={styles.value}>{total}</Text>
+        </View>
+        <View style={styles.cardFooter}>
+          <View style={styles.flex}>
+            <Text style={styles.textFooter}>Ver detalhado</Text>
+            <MaterialIcons name="keyboard-arrow-right" size={24} color="#fff" />
+          </View>
+        </View>
       </View>
     </View>
   );

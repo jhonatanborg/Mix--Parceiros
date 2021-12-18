@@ -10,7 +10,6 @@ import AuthContext from "../../contexts/session";
 import { statusPurchase } from "../../shared/purchase";
 export default function Details({ route, navigation }) {
   const { user } = useContext(AuthContext);
-  console.log(user);
   const [itensPurchase, setItensPurchase] = useState(null);
   const [purchase, setPurchase] = useState(route.params);
   const [address, setAddress] = useState(route.params.address);
@@ -19,6 +18,9 @@ export default function Details({ route, navigation }) {
     const checkedList = [...itensPurchase];
     checkedList[key].check = !checkedList[key].check;
     setItensPurchase(checkedList);
+  }
+  function handleMap() {
+    navigation.navigate('Map', address)
   }
   function itens(response) {
     const itens = [];
@@ -87,7 +89,7 @@ export default function Details({ route, navigation }) {
           <View>
             <Text style={styles.heading1}>Endereço</Text>
           </View>
-          <View style={styles.card}>
+          <TouchableOpacity onPress={handleMap} style={styles.card}>
             <View style={styles.content2}>
               <Text numberOfLines={2} style={styles.text}>
                 {address && address.street
@@ -95,7 +97,7 @@ export default function Details({ route, navigation }) {
                   : "Retirada"}
               </Text>
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={{ paddingBottom: 140 }}>
           <View>
@@ -104,16 +106,17 @@ export default function Details({ route, navigation }) {
           {itensPurchase &&
             itensPurchase.map((item, key) => {
               return (
-                <ListItem
-                  id={key}
-                  key={key}
-                  name={item.name}
-                  quantity={item.quantity}
-                  sale_value={item.sale_value}
-                  checked={(key) => checked(key)}
-                  total={item.total}
-                  check={item.check}
-                />
+                <View key={key}>
+                  <ListItem
+                    id={key}
+                    name={item.name}
+                    quantity={item.quantity}
+                    sale_value={item.sale_value}
+                    checked={(key) => checked(key)}
+                    total={item.total}
+                    check={item.check}
+                  />
+                </View>
               );
             })}
         </View>

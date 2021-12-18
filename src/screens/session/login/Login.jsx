@@ -18,7 +18,6 @@ export default function Login() {
   const [error, setError] = useState(false);
   const { login } = useContext(AuthContext);
   async function handleSignIn() {
-    console.log(submit.value);
 
     if (submit.value) {
       const response = await login({
